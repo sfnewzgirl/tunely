@@ -8,6 +8,10 @@
 
 /* hard-coded data! */
 var sampleAlbums = [];
+var source;
+var template;
+var $albums;
+
 sampleAlbums.push({
              artistName: 'Ladyhawke',
              name: 'Ladyhawke',
@@ -34,19 +38,18 @@ sampleAlbums.push({
            });
 /* end of hard-coded data */
 
-
-
-
 $(document).ready(function() {
   console.log('app.js loaded!');
+
+  source = $('#album-template').html();
+  template = Handlebars.compile(source);
+  sampleAlbums.forEach(function(album) {
+    renderAlbum(album);
+  });
+
 });
 
-
-
-
-
-// this function takes a single album and renders it to the page
 function renderAlbum(album) {
-  console.log('rendering album:', album);
-
+  var albumHtml = template(album);
+  $('#albums').prepend(albumHtml);
 }
