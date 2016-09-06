@@ -47,6 +47,15 @@ $(document).ready(function() {
     renderAlbum(album);
   });
 
+
+  $.ajax({
+    method: 'GET',
+    url: 'api/albums',
+    dataType: 'json',
+    success: onSuccess,
+    error: handleError
+  });
+
 });
 
 function renderAlbum(album) {
