@@ -3,8 +3,8 @@ $(document).ready(function() {
 
   $.ajax({
     method: 'GET',
-    url: 'api/albums',
-    // dataType: 'json',
+    url: '/api/albums',
+    dataType: 'json',
     success: onSuccess,
     error: handleError
   });
