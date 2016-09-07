@@ -2,9 +2,13 @@
  * DATABASE *
  ************/
 
+ var db = require('../models');
+
 // GET /api/albums
 function index(req, res) {
-  res.json(albums);
+  db.Album.find({}, function(err, allAlbums) {
+   res.json(allAlbums);
+ });
 }
 
 function create(req, res) {

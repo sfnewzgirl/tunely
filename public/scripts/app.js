@@ -7,37 +7,35 @@
 
 
 /* hard-coded data! */
-var sampleAlbums = [];
-var source;
-var template;
-var $albums;
+// var sampleAlbums = [];
+// var source;
+// var template;
+// var $albums;
 
 $(document).ready(function() {
   console.log('app.js loaded!');
 
-  source = $('#album-template').html();
-  template = Handlebars.compile(source);
-
   $.ajax({
     method: 'GET',
     url: 'api/albums',
-    dataType: 'json',
+    // dataType: 'json',
     success: onSuccess,
     error: handleError
   });
 
 });
 
-function renderAlbum() {
-  $('#albums').empty();
-  var albumHtml = template(album);
-  $('#albums').prepend(albumHtml);
-}
-
-function onSuccess(albumsList) {
-  albumsList.forEach(function(album) {
+function onSuccess(albums) {
+  albums.forEach(function(album) {
     renderAlbum(album);
   });
+}
+
+function renderAlbum(album) {
+  albumHtml = $('#album-template').html();
+  template = Handlebars.compile(albumHtml);
+  var html = template(album);
+  $('#albums').prepend(html);
 }
 
 function handleError(error) {

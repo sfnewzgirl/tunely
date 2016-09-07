@@ -30,7 +30,7 @@ var albumsList =[];
                 genres: [ 'country', 'rock' ]
               });
 
-db.Album.remove({}, function(err, albumsList){
+db.Album.remove({}, function(err, albums){
 
   db.Album.create(albumsList, function(err, albums){
     if (err) { return console.log('ERROR', err); }
