@@ -1,17 +1,3 @@
-/* CLIENT-SIDE JS
- *
- * You may edit this file as you see fit.  Try to separate different components
- * into functions and objects as needed.
- *
- */
-
-
-/* hard-coded data! */
-// var sampleAlbums = [];
-// var source;
-// var template;
-// var $albums;
-
 $(document).ready(function() {
   console.log('app.js loaded!');
 
@@ -32,9 +18,9 @@ function onSuccess(albums) {
 }
 
 function renderAlbum(album) {
-  albumHtml = $('#album-template').html();
-  template = Handlebars.compile(albumHtml);
-  var html = template(album);
+  var albumHtml = $('#album-template').html();
+  var albumsTemplate = Handlebars.compile(albumHtml);
+  var html = albumsTemplate(album);
   $('#albums').prepend(html);
 }
 
