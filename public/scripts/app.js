@@ -32,7 +32,6 @@ function AlbumsIndexController ($http) {
     }); function errorCallback(response) {
       console.log('There was an error getting the data', response);
     };
-}
 
   vm.createAlbum = function() {
     $http({
@@ -49,4 +48,5 @@ function AlbumsIndexController ($http) {
     }); function errorCallback(response) {
       console.log('There was an error getting the data', response);
     };
+  }
 }
