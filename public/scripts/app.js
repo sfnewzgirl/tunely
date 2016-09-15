@@ -19,37 +19,9 @@ function AlbumsIndexController ($http) {
   vm.newAlbum = {
     name: 'Viva Hate',
     artistName: 'Morrissey'
-<<<<<<< HEAD
   }
 
   vm.albums = [];
-
-  $http({
-    method: 'GET',
-    url: '/api/albums'
-    }).then(function successCallback(response) {
-      vm.albums = response.data;
-    }); function errorCallback(response) {
-      console.log('There was an error getting the data', response);
-    };
-
-  vm.createAlbum = function() {
-    $http({
-      method: 'POST',
-      url: '/api/albums',
-      data: vm.newAlbum
-    }).then(function successCallback(response) {
-      console.log(response);
-      vm.albums.push(response.data);
-      vm.newAlbum = {
-        name: '',
-        artistName: ''
-      }
-    }); function errorCallback(response) {
-      console.log('There was an error getting the data', response);
-    };
-=======
-  };
 
   $http({
     method: 'GET',
@@ -70,6 +42,34 @@ function AlbumsIndexController ($http) {
     }, function errorCallback(response) {
       console.log('There was an error posting the data', response);
     });
->>>>>>> fae59e1dc8b10ca043e894bd7fc30706efbc87b3
+  }
+
+    vm.deleteAlbum = function (album) {
+    $http({
+      method: 'DELETE',
+      url: '/api/albums/'+ album._id
+    }).then(function successCallback(deletedAlbum) {
+      var index = vm.albums.indexOf(deletedAlbum);
+      vm.albums.splice(index, 1);
+    }, function errorCallback(response) {
+      console.log('There was an error deleting the data', response);
+    });
+  }
+
+  vm.updateAlbum = function(album){
+  $http({
+    method: 'PUT',
+    url: '/api/albums/' + album._id,
+    data: {
+      name: album.name,
+      artistName: album.artistName
+    },
+  }).then(function successCallback(updatedAlbumJson) {
+    var index = vm.albums.indexOf(album);
+    vm.albums.splice(index, 1, updatedAlbumJson);
+    // any hiding / showing that needs to occur
+  }, function errorCallback(response) {
+    console.log('There was an error deleting the data', response);
+  });
   }
 }
