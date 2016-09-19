@@ -32,7 +32,7 @@
                       <div class="list-group-item" ng-repeat="song in albumsShowCtrl.album.songs">
                         <button type="button" class="btn btn-warning" ng-hide="editing" ng-click="editing = true">Edit</button>
                         <button type="button" class="btn btn-danger" ng-hide="editing">Delete</button>
-                        <button type="button" class="btn btn-success" ng-show="editing">Save</button>
+                        <button type="button" class="btn btn-success" ng-show="editing" ng-click="editing = false">Save</button>
                         ({{song.trackNumber}})
                         <span ng-hide="editing">{{song.name}}</span>
                       </div>
