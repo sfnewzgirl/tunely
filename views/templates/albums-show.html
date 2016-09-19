@@ -30,9 +30,9 @@
                     <li class="list-group-item">
                       <h4 class="inline-header">Songs:</h4>
                       <div class="list-group-item" ng-repeat="song in albumsShowCtrl.album.songs">
-                        <button type="button" class="btn btn-warning" ng-hide="editing" ng-click="editing = true">Edit</button>
-                        <button type="button" class="btn btn-danger" ng-hide="editing">Delete</button>
-                        <button type="button" class="btn btn-success" ng-show="editing" ng-click="albumsShowCtrl.editSong(song); editing = false">Save</button>
+                        <button type="button" class="btn btn-warning glyphicon glyphicon-pencil" ng-hide="editing" ng-click="editing = true"></button>
+                        <button type="button" class="btn btn-danger glyphicon glyphicon-remove" ng-hide="editing"></button>
+                        <button type="button" class="btn btn-success glyphicon glyphicon-ok" ng-show="editing" ng-click="albumsShowCtrl.editSong(song); editing = false"> Save</button>
                         ({{song.trackNumber}})
                         <span ng-hide="editing">{{song.name}}</span>
                         <input type="text" class="form-control" ng-show="editing" ng-model="song.name" placeholder="{{song.name}}">
