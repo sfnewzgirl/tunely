@@ -17,4 +17,15 @@ function AlbumsShowController ($http, $routeParams) {
     console.log('There was an error getting the data', response);
   });
 
+  vm.editSong = function (song) {
+    $http({
+      method: 'PUT',
+      url: '/api/albums/' + $routeParams.id + '/songs/' + song._id ,
+      data: song
+    }).then(function successCallback (response) {
+    }, function errorCallback(response) {
+      console.log('song put error', response);
+    });
+  }
+
 }
