@@ -17,6 +17,11 @@ function config ($routeProvider, $locationProvider) {
       controllerAs: 'albumsIndexCtrl',
       controller: 'AlbumsIndexController'
     })
+    .when('/albums', {
+         templateUrl: '/templates/albums',
+         controllerAs: 'albumsIndexCtrl',
+         controller: 'AlbumsIndexController'
+       })
     .when('/albums/:id', {
       templateUrl: '/templates/albums-show',
       controllerAs: 'albumsShowCtrl',

@@ -33,10 +33,24 @@ function AlbumsShowController ($http, $routeParams) {
     method: 'DELETE',
     url: '/api/albums/' + $routeParams.id + '/songs/' + song._id
     }).then(function deleteSuccessCallback(response) {
-      var index = vm.album.songs.indexOf(json);
+      var index = vm.album.songs.indexOf(response);
       vm.album.songs.splice(index, 1);
     }, function errorCallback(response) {
       console.log('song delete error', response);
+    });
+  }
+
+  vm.createSong = function (song) {
+    $http({
+      method: 'POST',
+      url: '/api/albums/' + $routeParams.id + '/songs',
+      data: vm.newSong
+    }).then(function createSuccessCallback(json) {
+      console.log(json);
+      vm.album.songs.push(json.data);
+      vm.newSong = {};
+    }, function errorCallback (response) {
+      console.log ('create song error', response);
     });
   }
 

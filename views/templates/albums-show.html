@@ -38,6 +38,12 @@
                         <input type="text" class="form-control" ng-show="editing" ng-model="song.name" placeholder="{{song.name}}">
                       </div>
                     </li>
+                    <hr>
+                      <form>
+                        <input type="text" class="form-control" ng-model="albumsShowCtrl.newSong.trackNumber" placeholder="Track Number">
+                        <input type="text" class="form-control" ng-model="albumsShowCtrl.newSong.name" placeholder="Track Name">
+                      </form>
+                    <button type="button" class="btn btn-success" ng-click="albumsShowCtrl.createSong(song)"><span class="glyphicon glyphicon-plus"></span> Add New Song</button>
                 </div>
               </div>
             </div>
