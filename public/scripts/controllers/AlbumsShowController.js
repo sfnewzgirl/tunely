@@ -22,9 +22,21 @@ function AlbumsShowController ($http, $routeParams) {
       method: 'PUT',
       url: '/api/albums/' + $routeParams.id + '/songs/' + song._id ,
       data: song
-    }).then(function successCallback (response) {
+      }).then(function editSuccessCallback (response) {
+      }, function errorCallback(response) {
+        console.log('song put error', response);
+      });
+    }
+
+  vm.deleteSong = function (song) {
+    $http({
+    method: 'DELETE',
+    url: '/api/albums/' + $routeParams.id + '/songs/' + song._id
+    }).then(function deleteSuccessCallback(response) {
+      var index = vm.album.songs.indexOf(json);
+      vm.album.songs.splice(index, 1);
     }, function errorCallback(response) {
-      console.log('song put error', response);
+      console.log('song delete error', response);
     });
   }
 
